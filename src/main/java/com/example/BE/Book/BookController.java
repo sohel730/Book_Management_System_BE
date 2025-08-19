@@ -3,11 +3,13 @@ package com.example.BE.Book;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.rsocket.annotation.ConnectMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -130,7 +132,12 @@ public class BookController
     	
     }
    
-    
+    @GetMapping("/GetAllBooks")
+    public List<Book> getallbooks(){
+    	
+    	return bookService.GetallBooks();
+    	
+    }
     
   }
     

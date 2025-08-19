@@ -1,5 +1,6 @@
 package com.example.BE.Book;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,4 +92,27 @@ public class BookeService {
 		return status;
 		
 	}
+	
+	
+	public List<Book> GetallBooks(){
+		
+		return BookRepo.findAll();
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
