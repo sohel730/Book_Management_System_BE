@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.rsocket.annotation.ConnectMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,6 +48,7 @@ public class BookController
         }
 
         // Create a new Book object
+        
         Book book = new Book();
         book.setBookName(bookName);
         book.setBookPrice(bookPrice);
@@ -125,18 +127,32 @@ public class BookController
     	
     
     @DeleteMapping("/DeletBookRecord/{id}")
-    public boolean deletboolrecord(@RequestParam("id") int id) 
+    public boolean deletboolrecord(@PathVariable("id") int id) 
     
     {
-       return  bookService.DeletBookRecord(id);
+       try {
+    	   return  bookService.DeletBookRecord(id);
+       }
+       
+       catch(Exception e) {
+    	   e.printStackTrace();
+    	   return false;
+       }
     	
     }
    
     @GetMapping("/GetAllBooks")
     public List<Book> getallbooks(){
     	
-    	return bookService.GetallBooks();
-    	
+      try {
+    		return bookService.GetallBooks();
+    	  
+      }
+    	catch(Exception e) {
+    		
+    		e.printStackTrace();
+    		return null;
+    	}
     }
     
   }
